@@ -1,0 +1,24 @@
+1.Co-registration of mean_func.nii.gz to the anatomical/structural image
+
+/usr/local/fsl/bin/flirt -in /mnt/c/Personal/WORK/BrainImaging/featanalysis.feat/mean_func.nii.gz 
+-ref 
+/mnt/c/Personal/WORK/BrainImaging/fsl_course_data/fmri1/fluency_task/structural_brain.nii.gz
+ -out 
+/mnt/c/Personal/WORK/BrainImaging/output -omat 
+/mnt/c/Personal/WORK/BrainImaging/output.mat -bins 256 -cost corratio -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 12  -interp trilinear
+
+
+2.Appying FLIRT transform for thresh_zstat1.nii.gz
+/usr/local/fsl/bin/flirt -in 
+/mnt/c/Personal/WORK/BrainImaging/featanalysis.feat/thresh_zstat1.nii.gz -applyxfm -init 
+/mnt/c/Personal/WORK/BrainImaging/output.mat -out 
+/mnt/c/Personal/WORK/BrainImaging/threshoutputs -paddingsize 0.0 -interp trilinear -ref 
+/mnt/c/Personal/WORK/BrainImaging/fsl_course_data/fmri1/fluency_task/structural_brain.nii.gz
+
+
+3.Appying FLIRT transform for thresh_zstat2.nii.gz
+/usr/local/fsl/bin/flirt -in 
+/mnt/c/Personal/WORK/BrainImaging/featanalysis.feat/thresh_zstat2.nii.gz -applyxfm -init 
+/mnt/c/Personal/WORK/BrainImaging/output.mat -out 
+/mnt/c/Personal/WORK/BrainImaging/thresh2_output -paddingsize 0.0 -interp trilinear -ref 
+/mnt/c/Personal/WORK/BrainImaging/fsl_course_data/fmri1/fluency_task/structural_brain.nii.gz
